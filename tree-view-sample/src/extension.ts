@@ -10,6 +10,20 @@ import { TestViewDragAndDrop } from './testViewDragAndDrop';
 import { TestView } from './testViewnew';
 
 export function activate(context: vscode.ExtensionContext) {
+
+	//console.log('context', context.extensionUri.fsPath);
+
+	//console.log('context', vscode.Uri.joinPath(context.extensionUri, 'resources', 'test.html'));
+
+	/*
+	const resourceFilePath = vscode.Uri.joinPath(context.extensionUri, 'resources', 'test.html');
+	vscode.workspace.openTextDocument(resourceFilePath).then((document) => {
+		vscode.window.showTextDocument(document, { preview: false });
+	});
+	*/
+
+
+
 	const rootPath = (vscode.workspace.workspaceFolders && (vscode.workspace.workspaceFolders.length > 0))
 		? vscode.workspace.workspaceFolders[0].uri.fsPath : undefined;
 

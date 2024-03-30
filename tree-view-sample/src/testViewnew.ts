@@ -1,4 +1,5 @@
 import * as vscode from 'vscode';
+import { activate } from './extension';
 
 export class TestView {
 	constructor(context: vscode.ExtensionContext) {
@@ -34,6 +35,9 @@ export class TestView {
 			*/
 			const clickedItem = searchTree(tree, args.key);
 			console.log('Clicked Item:', clickedItem);
+			vscode.window.showInformationMessage(JSON.stringify(clickedItem));
+			//vscode.window.showInformationMessage('This is a custom function');
+			customFunction(context, args.key);
 			
 
 			// Example usage:
@@ -122,8 +126,53 @@ function searchTreeAsync(tree: any, arg: string): Promise<any> {
 }
 
 
-function customFunction(args: any) {
+
+/*
+function openFileInResourcesFolder(fileName: string): void {
+	const resourceUri = vscode.Uri.joinPath(context.extensionUri, 'resources', fileName);
+	vscode.workspace.openTextDocument(resourceUri).then((document) => {
+		vscode.window.showTextDocument(document);
+	});
+}
+*/
+
+
+
+
+function customFunction(context: vscode.ExtensionContext, args: any) {
 	vscode.window.showInformationMessage('This is a custom function');
+
+	const resourceFilePath = vscode.Uri.joinPath(context.extensionUri, 'resources', 'test.html');
+
+	vscode.workspace.openTextDocument(resourceFilePath).then((document) => {
+		const htmlText = document.getText();
+		vscode.workspace.openTextDocument().then((document) => {
+			
+			vscode.window.showTextDocument(document, { preview: false }).then((editor) => {
+				
+				editor.edit((editBuilder) => {
+					editBuilder.insert(new vscode.Position(0, 0), htmlText);
+				});
+			});
+			
+		});
+
+
+		//vscode.window.showInformationMessage('html file: ',htmlText);
+	});
+
+	
+
+	vscode.workspace.openTextDocument(resourceFilePath).then((document) => {
+		vscode.window.showTextDocument(document, { preview: false });
+	});
+
+	vscode.workspace.openTextDocument().then((document) => {
+		//vscode.window.showTextDocument(document, { preview: false });
+	});
+
+
+	return;
 	
 	//console.log(args);
 
@@ -174,6 +223,9 @@ const tree: any = {
 	b: {
 		ba: {},
 		bb: {},
+		dd: {
+			testdd: { test: 'DDvalue1', test2: 'DDvalue2' },
+		}
 	},
 };
 const nodes: any = {};
