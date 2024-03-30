@@ -7,7 +7,7 @@ import { JsonOutlineProvider } from './jsonOutline';
 import { FtpExplorer } from './ftpExplorer';
 import { FileExplorer } from './fileExplorer';
 import { TestViewDragAndDrop } from './testViewDragAndDrop';
-import { TestView } from './testView';
+import { TestView } from './testViewnew';
 
 export function activate(context: vscode.ExtensionContext) {
 	const rootPath = (vscode.workspace.workspaceFolders && (vscode.workspace.workspaceFolders.length > 0))

@@ -43,8 +43,7 @@
 			"explorer": [
 				{
 					"id": "jsonOutline",
-					"name": "Json Outline",
-					"when": "jsonOutlineEnabled"
+					"name": "Json Outline"
 				},
 				{
 					"id": "ftpExplorer",
@@ -107,7 +106,7 @@
 			},
 			{
 				"command": "jsonOutline.refresh",
-				"title": "Refresh",
+				"title": "Refresh JSON",
 				"icon": {
 					"light": "resources/light/refresh.svg",
 					"dark": "resources/dark/refresh.svg"
@@ -115,7 +114,7 @@
 			},
 			{
 				"command": "jsonOutline.refreshNode",
-				"title": "Refresh",
+				"title": "Refresh JSON Node",
 				"icon": {
 					"light": "resources/light/refresh.svg",
 					"dark": "resources/dark/refresh.svg"
@@ -123,7 +122,7 @@
 			},
 			{
 				"command": "jsonOutline.renameNode",
-				"title": "Rename"
+				"title": "Rename JSON Node"
 			},
 			{
 				"command": "fileExplorer.refreshFile",
@@ -144,6 +143,10 @@
 			{
 				"command": "testView.changeTitle",
 				"title": "Test View: Change Title"
+			},
+			{
+				"command": "testView.customFunction",
+				"title": "Test View: Custom Function"
 			}
 		],
 		"menus": {
@@ -175,6 +178,12 @@
 					"command": "ftpExplorer.refresh",
 					"when": "view == ftpExplorer",
 					"group": "navigation"
+				},
+				{
+					"command": "testView.changeTitle",
+					"title": "Test View: Change Title",
+					"when": "view == testView"
+					
 				}
 			],
 			"view/item/context": [
@@ -190,7 +199,7 @@
 				{
 					"command": "jsonOutline.renameNode",
 					"when": "view == jsonOutline"
-				},
+				},	
 				{
 					"command": "jsonOutline.refreshNode",
 					"when": "view == jsonOutline",
@@ -200,6 +209,12 @@
 					"command": "fileExplorer.refreshFile",
 					"when": "view == fileExplorer && viewItem == file",
 					"group": "inline"
+				},
+				{
+					"command": "testView.customFunction",
+					"when": "view == testView && viewItem == svgItem",
+					"group": "inline"
+					
 				}
 			]
 		},
