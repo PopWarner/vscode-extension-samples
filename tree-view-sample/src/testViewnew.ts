@@ -1,8 +1,16 @@
 import * as vscode from 'vscode';
 import { activate } from './extension';
 
+//import tree = require('./testview.json');
+import * as tree from './testview.json';
+
 export class TestView {
 	constructor(context: vscode.ExtensionContext) {
+
+
+		console.log('TestView constructor', tree);
+
+
 		const view = vscode.window.createTreeView('testView', {
 			treeDataProvider: aNodeWithIdTreeDataProvider(),
 			showCollapseAll: true,
@@ -203,7 +211,7 @@ function customFunction(context: vscode.ExtensionContext, args: any) {
 	console.log(tree);
 }
 
-const tree: any = {
+const tree1: any = {
 	a: {
 		aa: {
 			aaa: {
